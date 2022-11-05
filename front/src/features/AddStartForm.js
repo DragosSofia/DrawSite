@@ -1,32 +1,53 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import {addPages} from '../slices/pagesSlice';
 
 function AddStartForm() {
+  const dispatch = useDispatch()
+
   const [name, setName] = useState("");
   const [file, setFile] = useState("");
   const [message, setMessage] = useState("");
 
-  let handleSubmit = async (e) => {
-    e.preventDefault();
+  const onNameChanged = e => setName(e.target.value)
+  const onFileChanged = e => setFile(e.target.value)
+
+  const handleSubmit = () => {
     try {
-      let res = await fetch("localhost:8080/post", {
-        method: "POST",
-        body: JSON.stringify({
-          name: name,
-          file: file
-        }),
-      });
-      let resJson = await res.json();
-      if (res.status === 200) {
-        setName("");
-        setFile("");
-        setMessage("User created successfully");
-      } else {
-        setMessage("Some error occured");
-      }
+      dispatch(addPages({title: name, file: file})).unwrap()
+
+      setName('')
+      setFile('')
     } catch (err) {
-      console.log(err);
+      console.error('Failed to save the file', err)
+    } finally {
+      console.log('hello world')
     }
-  };
+  }
+  // let handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     let res = await fetch("localhost:8080/post", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         name: name,
+  //         file: file
+  //       }),
+  //     });
+  //     let resJson = await res.json();
+  //     if (res.status === 200) {
+  //       setName("");
+  //       setFile("");
+  //       setMessage("User created successfully");
+  //     } else {
+  //       setMessage("Some error occured");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <section>
@@ -37,16 +58,16 @@ function AddStartForm() {
           type="text"
           value={name}
           placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
+          onChange={onNameChanged}
         />
 
         <input
           type="file"
           value={file}
-          onChange={(e) => setFile(e.target.value)}
+          onChange={onFileChanged}
         />
 
-        <button type="submit" onKeyPress={handleSubmit}>Create</button>
+        <button type="button" onClick={handleSubmit}>Create</button>
 
         <div className="message">{message ? <p>{message}</p> : null}</div>
       </form>
