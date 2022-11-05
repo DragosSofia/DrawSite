@@ -1,10 +1,11 @@
 import './App.css';
+import AddStartForm from './features/AddStartForm';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        It's a good start
+        <AddStartForm></AddStartForm>
       </header>
     </div>
   );
