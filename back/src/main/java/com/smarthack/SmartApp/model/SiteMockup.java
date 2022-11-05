@@ -6,6 +6,5 @@ import java.util.ArrayList;
 
 @Data
 public class SiteMockup {
-    private String siteName;
     private ArrayList<SiteElement> elements;
 }

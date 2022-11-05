@@ -3,6 +3,7 @@ package com.smarthack.SmartApp.service;
 import com.smarthack.SmartApp.model.SiteMockup;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.fileupload.FileUpload;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +20,7 @@ import static java.lang.Integer.parseInt;
 @Getter
 @Setter
 public class SiteMockupService {
-    static private SiteMockup siteMockup;
+    static private SiteMockup siteMockup = new SiteMockup();
 
     public void getElements() throws IOException {
         URL url = new URL("http://localhost:8080/site_mockup.txt");
@@ -34,9 +35,10 @@ public class SiteMockupService {
         read.close();
     }
 
-    public void post(String siteName, MultipartFile file) throws IOException {
-        siteMockup.setSiteName(siteName);
-        Path filePath = Paths.get("http://localhost:8080/image");
+    public void postMockup(MultipartFile file) throws IOException {
+        Path filePath = Paths.get("http://localhost:8080/image.jpg");
+
         Files.write(filePath, file.getBytes());
+        //System.out.println(file.getName());
     }
 }

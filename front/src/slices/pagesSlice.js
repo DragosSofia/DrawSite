@@ -1,7 +1,7 @@
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
+const POSTS_URL = 'http://localhost:8080/post';
 
 const initialState = {
     pages: [],

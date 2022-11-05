@@ -21,7 +21,7 @@ function AddStartForm() {
     try {
         const response = await axios({
           method: "post",
-          url: "/api/upload/file",
+          url: "http://localhost:8080/post",
           data: formData,
           headers: { "Content-Type": "multipart/form-data" },
         });
