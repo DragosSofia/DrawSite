@@ -1,12 +1,14 @@
+import React from 'react';
+//import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
+import Home from './pages/Home.js';
+//import Services from './pages/Services'; 
+//import Products from './pages/Products';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        It's a good start
-      </header>
-    </div>
+   <Home/>
   );
 }
 
