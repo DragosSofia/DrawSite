@@ -1,17 +1,21 @@
 package com.smarthack.SmartApp.service;
 
+import com.smarthack.SmartApp.model.Coordinate;
+import com.smarthack.SmartApp.model.Image;
+import com.smarthack.SmartApp.model.SiteElement;
 import com.smarthack.SmartApp.model.SiteMockup;
+import com.smarthack.SmartApp.repository.ImageRepository;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.fileupload.FileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
@@ -22,23 +26,27 @@ import static java.lang.Integer.parseInt;
 public class SiteMockupService {
     static private SiteMockup siteMockup = new SiteMockup();
 
-    public void getElements() throws IOException {
+    public ArrayList<SiteElement> getElements() throws IOException {
         URL url = new URL("http://localhost:8080/site_mockup.txt");
         BufferedReader read = new BufferedReader(new InputStreamReader(url.openStream()));
         String line;
-        int numberOfElements  = parseInt(read.readLine());
+        ArrayList<SiteElement> siteElements = new ArrayList<>();
 
-        for (int i = 0 ; i < numberOfElements; i++) {
-            line = read.readLine();
-            //System.out.println(line);
+        while ((line = read.readLine()) != null){
+            String[] strings = line.split(" ");
+            Coordinate coordinate = new Coordinate(parseInt(strings[0]), parseInt(strings[1]));
+            siteElements.add(new SiteElement(coordinate, parseInt(strings[2]), parseInt(strings[3]), strings[4]));
         }
         read.close();
+
+        return siteElements;
     }
 
     public void postMockup(MultipartFile file) throws IOException {
-        Path filePath = Paths.get("http://localhost:8080/image.jpg");
+        ByteArrayInputStream bis = new ByteArrayInputStream(file.getBytes());
+        BufferedImage image = ImageIO.read(bis);
+        ImageIO.write(image, "jpg", new File("src/main/resources/static/output.jpg"));
 
-        Files.write(filePath, file.getBytes());
-        //System.out.println(file.getName());
+        Process p = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
     }
 }

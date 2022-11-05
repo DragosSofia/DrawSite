@@ -1,11 +1,13 @@
 package com.smarthack.SmartApp.controller;
 
+import com.smarthack.SmartApp.model.SiteElement;
 import com.smarthack.SmartApp.service.SiteMockupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @RestController
 public class SiteMockupController {
@@ -13,8 +15,8 @@ public class SiteMockupController {
     SiteMockupService siteMockupService;
 
     @GetMapping("/get")
-    public void getElements() throws IOException {
-        siteMockupService.getElements();
+    public ArrayList<SiteElement> getElements() throws IOException {
+        return siteMockupService.getElements();
     }
 
     @PostMapping("/post")
