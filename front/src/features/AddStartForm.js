@@ -1,53 +1,44 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import axios from 'axios'
 import {addPages} from '../slices/pagesSlice';
 
 function AddStartForm() {
   const dispatch = useDispatch()
 
   const [name, setName] = useState("");
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
 
   const onNameChanged = e => setName(e.target.value)
-  const onFileChanged = e => setFile(e.target.value)
+  const onFileChanged = e => setFile(e.target.files[0])
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append("file", file);
     try {
-      dispatch(addPages({title: name, file: file})).unwrap()
+        const response = await axios({
+          method: "post",
+          url: "/api/upload/file",
+          data: formData,
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      } catch(error) {
+        console.log(error)
+      }
+    // try {
+    //   dispatch(addPages({title: name, file: file})).unwrap()
 
-      setName('')
-      setFile('')
-    } catch (err) {
-      console.error('Failed to save the file', err)
-    } finally {
-      console.log('hello world')
-    }
+    //   setName('')
+    //   setFile('')
+    // } catch (err) {
+    //   console.error('Failed to save the file', err)
+    // } finally {
+    //   console.log('hello world')
+    // }
   }
-  // let handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     let res = await fetch("localhost:8080/post", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         name: name,
-  //         file: file
-  //       }),
-  //     });
-  //     let resJson = await res.json();
-  //     if (res.status === 200) {
-  //       setName("");
-  //       setFile("");
-  //       setMessage("User created successfully");
-  //     } else {
-  //       setMessage("Some error occured");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <section>
@@ -63,7 +54,6 @@ function AddStartForm() {
 
         <input
           type="file"
-          value={file}
           onChange={onFileChanged}
         />
 
