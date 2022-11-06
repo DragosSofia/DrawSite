@@ -120,12 +120,12 @@ for j in range(len(arr)):
         arr2.append(arr[j])
 #print(arr2)
 ##arr2 = arr
-file = open("src//main//resources//static//site_mockup.txt", "w")
-print(len(arr))
-for i in range(len(arr2)):
-        file.write(str(arr2[i][0]) + " " + str(arr2[i][1]) + " " +
-                   str(arr2[i][2]) + " " +
-                   str(arr2[i][3]) + " " +
-                   str(arr2[i][4]) + " " + "\n")
+with open("src//main//resources//static//site_mockup.txt", "w") as file:
+    print(len(arr))
+    for i in range(len(arr2)):
+            file.write(str(arr2[i][0]) + " " + str(arr2[i][1]) + " " +
+                       str(arr2[i][2]) + " " +
+                       str(arr2[i][3]) + " " +
+                       str(arr2[i][4]) + " " + "\n")
 
 

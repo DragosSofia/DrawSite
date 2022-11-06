@@ -19,8 +19,8 @@ import static java.lang.Integer.parseInt;
 public class SiteMockupService {
 
     public ArrayList<SiteElement> getElements() throws IOException {
-        URL url = new URL("http://localhost:8080/site_mockup.txt");
-        BufferedReader read = new BufferedReader(new InputStreamReader(url.openStream()));
+        File file = new File("src/main/resources/static/site_mockup.txt");
+        BufferedReader read = new BufferedReader(new FileReader(file));
         String line;
         ArrayList<SiteElement> siteElements = new ArrayList<>();
 
@@ -28,6 +28,7 @@ public class SiteMockupService {
             String[] strings = line.split(" ");
             Coordinate coordinate = new Coordinate(parseInt(strings[0]), parseInt(strings[1]));
             siteElements.add(new SiteElement(coordinate, parseInt(strings[2]), parseInt(strings[3]), strings[4]));
+            //System.out.println(line);
         }
         read.close();
 
@@ -37,10 +38,15 @@ public class SiteMockupService {
     public ArrayList<SiteElement> postMockup(MultipartFile file) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(file.getBytes());
         BufferedImage image = ImageIO.read(bis);
-        ImageIO.write(image, "jpg", new File("src/main/resources/static/output.jpg"));
+        File file1 = new File("src/main/resources/static/output.jpg");
+        ImageIO.write(image, "jpg", file1);
         Process p = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
-        Process p1 = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
 
+        try {
+            p.waitFor();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this.getElements();
     }
 }
