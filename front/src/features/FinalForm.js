@@ -1,20 +1,21 @@
 import { selectAllComp, updateComp } from "../slices/componentSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import {Link } from 'react-router-dom';
 
 function FinalForm () {
   const dispatch = useDispatch()
   const comps = useSelector(selectAllComp);
 
+  console.log(comps);
+
   const HandleNext = e => {
-    console.log(comps)
+    
   }
 
   const onChange = (e, id) => {
-    console.log(e)
     const opt = e.target.value
     dispatch(updateComp({id, opt }))
-    console.log(comps)
   }
 
   const form = comps.map((c) => {
@@ -37,7 +38,9 @@ function FinalForm () {
   <form>
     {form}
   </form>
-  <h2><button onClick={HandleNext}>Next</button></h2>
+  <h2><button  onClick={HandleNext}>
+    <Link to={`custom`}>Next</Link> 
+  </button></h2>
   </>
   )
 }

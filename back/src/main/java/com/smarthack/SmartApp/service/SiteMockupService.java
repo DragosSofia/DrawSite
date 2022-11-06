@@ -47,6 +47,6 @@ public class SiteMockupService {
         BufferedImage image = ImageIO.read(bis);
         ImageIO.write(image, "jpg", new File("src/main/resources/static/output.jpg"));
 
-        Process p = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
+        Process p = Runtime.getRuntime().exec("C:\\Users\\Robert\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe src\\main\\resources\\script.py");
     }
 }

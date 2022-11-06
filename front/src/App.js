@@ -3,16 +3,22 @@ import AddStartForm from './features/AddStartForm';
 import FinalForm from './features/FinalForm';
 import Home from './pages/Home.js';
 import Custom from './pages/Custom'
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <AddStartForm/> */}
-        {/* <Home/> */}
-        <Custom/>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<AddStartForm/>}></Route>
+
+      <Route path="chestionar">
+        <Route index element={<FinalForm />} />
+          <Route path="custom">
+            <Route index element={<Custom />} />
+          </Route>
+      </Route>
+
+      
+    </Routes>
   );
 }
 
