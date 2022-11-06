@@ -33,11 +33,15 @@ public class SiteMockupService {
         return siteElements;
     }
 
-    public void postMockup(MultipartFile file) throws IOException {
+    public ArrayList<SiteElement> postMockup(MultipartFile file) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(file.getBytes());
         BufferedImage image = ImageIO.read(bis);
         ImageIO.write(image, "jpg", new File("src/main/resources/static/output.jpg"));
 
-        Process p = Runtime.getRuntime().exec("C:\\Users\\Robert\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe src\\main\\resources\\script.py");
+        Process p = Runtime.getRuntime().exec("C:\\Users\\Robert\\Desktop\\python.exe src\\main\\resources\\script.py");
+
+        return this.getElements();
+
+
     }
 }

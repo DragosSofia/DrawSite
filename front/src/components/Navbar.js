@@ -29,10 +29,10 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <div className="navbar-logo" onClick={closeMobileMenu}>
-            TRVL
+            DRAWEB.
             <i class="fab fa-typo3" />
           </div>{" "}
-          TRVL
+          DRAWEB.
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
