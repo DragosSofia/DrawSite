@@ -40,7 +40,7 @@ public class SiteMockupService {
         ImageIO.write(image, "jpg", new File("src/main/resources/static/output.jpg"));
         Process p = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
         Process p1 = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
-        
+
         return this.getElements();
     }
 }
