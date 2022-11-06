@@ -20,11 +20,7 @@ public class SiteMockupController {
     }
 
     @PostMapping("/post")
-<<<<<<< HEAD
-    public ArrayList<SiteElement> post(@RequestBody MultipartFile file) throws IOException, InterruptedException {
-=======
     public ArrayList<SiteElement> post(@RequestBody MultipartFile file) throws IOException {
->>>>>>> da57f09d2b68b2d0b014d1dcc2d33230e32059d4
         return siteMockupService.postMockup(file);
 
     }

@@ -41,14 +41,6 @@ public class SiteMockupService {
         Process p = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
         Process p1 = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
 
-<<<<<<< HEAD
         return this.getElements();
-=======
-        Process p = Runtime.getRuntime().exec("C:\\Users\\Robert\\Desktop\\python.exe src\\main\\resources\\script.py");
-
-        return this.getElements();
-
-
->>>>>>> da57f09d2b68b2d0b014d1dcc2d33230e32059d4
     }
 }
