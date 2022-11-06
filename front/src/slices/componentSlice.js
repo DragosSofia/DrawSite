@@ -1,8 +1,8 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import { nanoid } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    components: [
+components: [
     {
         id: 1,
         type: "text",
@@ -72,11 +72,14 @@ const compSlice = createSlice({
     }
 })
 
+
 export const selectAllComp = (state) => state.comps.components;
 
 export const selectCompById = (state, id) =>
+
     state.comps.find(components => components.id === id);
 
-export const { compAdded, updateComp } = compSlice.actions
+
+export const { compAdded, updateComp } = compSlice.actions;
 
 export default compSlice.reducer;
