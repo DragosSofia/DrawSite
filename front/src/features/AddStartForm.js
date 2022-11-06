@@ -28,7 +28,11 @@ function AddStartForm() {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
+<<<<<<< HEAD
       console.log(response);
+=======
+      console.log(response)
+>>>>>>> da57f09d2b68b2d0b014d1dcc2d33230e32059d4
     } catch (error) {
       console.log(error);
     }
