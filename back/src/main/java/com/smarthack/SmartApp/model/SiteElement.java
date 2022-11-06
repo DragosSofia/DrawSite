@@ -7,9 +7,6 @@ import lombok.Setter;
 @Setter
 public class SiteElement {
     private Coordinate upLeftCorner;
-//    private Coordinate upRightCorner;
-//    private Coordinate downLeftCorner;
-//    private Coordinate downRightCorner;
     private int height;
     private int width;
     private String type;
