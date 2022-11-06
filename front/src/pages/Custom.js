@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Image from "../components/Image";
 import Text from "../components/Text";
 import { selectAllComp } from "../slices/componentSlice";
+import { store } from  "../app/store";
+import React from 'react';
+import { fetchComp } from "../slices/componentSlice";
 
-import React from 'react'
+
+store.dispatch(fetchComp());
 
 const Custom = () => {
- 
+
+
     const comps = useSelector(selectAllComp);
 
     let content = comps.map(comp => {switch (comp.type) {

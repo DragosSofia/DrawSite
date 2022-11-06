@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { addPages } from "../slices/pagesSlice";
 import { Link } from "react-router-dom";
+
+
+
 function AddStartForm() {
   const dispatch = useDispatch();
 
@@ -15,16 +18,17 @@ function AddStartForm() {
   const onFileChanged = (e) => setFile(e.target.files[0]);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const response = await axios({
+      let response = await axios({
         method: "post",
         url: "http://localhost:8080/post",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +59,10 @@ function AddStartForm() {
         <input type="file" onChange={onFileChanged} />
 
         <button type="button" onClick={handleSubmit}>
-          <Link to={`chestionar`}>Create</Link>
+          Create
+        </button>
+        <button type="button">
+          <Link to={`chestionar`}>Next</Link>
         </button>
         <div className="message">{message ? <p>{message}</p> : null}</div>
       </form>

@@ -21,7 +21,7 @@ const compSlice = createSlice({
     reducers: {
         compAdded: {
             reducer(state, action) {
-                state.components.push(action.payload)
+                state.comps = action.payload
             },
             prepare(type, x, y, w, l, opt) {
                 return {

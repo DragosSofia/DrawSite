@@ -20,8 +20,8 @@ public class SiteMockupController {
     }
 
     @PostMapping("/post")
-    public void post(@RequestBody MultipartFile file) throws IOException {
-        siteMockupService.postMockup(file);
+    public ArrayList<SiteElement> post(@RequestBody MultipartFile file) throws IOException, InterruptedException {
+        return siteMockupService.postMockup(file);
 
     }
 }

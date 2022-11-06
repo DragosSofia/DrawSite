@@ -9,7 +9,7 @@ const Image = (props) => {
         style = {{
         position: "absolute",
         left: props.left,
-        top: props.top }}/>
+        down: props.top }}/>
   )
 }
 

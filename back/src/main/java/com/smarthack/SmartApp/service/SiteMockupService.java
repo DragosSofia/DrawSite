@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Integer.parseInt;
 
@@ -33,11 +34,13 @@ public class SiteMockupService {
         return siteElements;
     }
 
-    public void postMockup(MultipartFile file) throws IOException {
+    public ArrayList<SiteElement> postMockup(MultipartFile file) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(file.getBytes());
         BufferedImage image = ImageIO.read(bis);
         ImageIO.write(image, "jpg", new File("src/main/resources/static/output.jpg"));
-
-        Process p = Runtime.getRuntime().exec("C:\\Users\\Robert\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe src\\main\\resources\\script.py");
+        Process p = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
+        Process p1 = Runtime.getRuntime().exec("C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe src\\main\\resources\\script.py");
+        
+        return this.getElements();
     }
 }

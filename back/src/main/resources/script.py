@@ -112,7 +112,7 @@ for i in range(len(lvColors)):
 
             #cv2.imshow("Square Corners", inputCopy)
             #cv2.waitKey(0)
-            arr.append([rectX, rectY, rectHeight, rectWidth, type[i]])
+            arr.append([int(rectX + rectWidth/2), int(rectY + rectHeight/2), rectHeight, rectWidth, type[i]])
     #print(arr)
 arr2 = []
 for j in range(len(arr)):

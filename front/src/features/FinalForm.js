@@ -2,15 +2,19 @@ import { selectAllComp, updateComp } from "../slices/componentSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {Link } from 'react-router-dom';
+import { store } from '../app/store'
+import { fetchComp } from "../slices/componentSlice";
+
+store.dispatch(fetchComp)
 
 function FinalForm () {
   const dispatch = useDispatch()
   const comps = useSelector(selectAllComp);
 
-  console.log(comps);
+  // console.log(comps);
 
-  const HandleNext = e => {
-    
+  const HandleNext = async e => {
+  
   }
 
   const onChange = (e, id) => {

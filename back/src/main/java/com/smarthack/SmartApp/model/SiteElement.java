@@ -17,4 +17,14 @@ public class SiteElement {
         this.width = width;
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "SiteElement{" +
+                "upLeftCorner=" + upLeftCorner +
+                ", height=" + height +
+                ", width=" + width +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
