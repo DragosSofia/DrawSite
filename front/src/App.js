@@ -1,7 +1,9 @@
 import './App.css';
 import AddStartForm from './features/AddStartForm';
+import FinalForm from './features/FinalForm';
 import Home from './pages/Home.js';
 import Custom from './pages/Custom'
+
 function App() {
   return (
     <div className="App">
