@@ -26,7 +26,13 @@ function AddStartForm() {
         url: "http://localhost:8080/post",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
+        <<<<<<< ultimul-branch
       })
+      console.log(response)
+=======
+      });
+      console.log(response);
+>>>>>>> Develop
       console.log(response)
     } catch (error) {
       console.log(error);
