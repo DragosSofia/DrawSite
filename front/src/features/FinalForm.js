@@ -11,7 +11,7 @@ function FinalForm () {
   const dispatch = useDispatch()
   const comps = useSelector(selectAllComp);
 
-  // console.log(comps);
+  console.log(comps);
 
   const HandleNext = async e => {
   
@@ -26,11 +26,11 @@ function FinalForm () {
     const id = c.id
     let text, input
     if( c.type === 'text'){
-      text = <h2>Add text for {id}</h2>
+      text = <h2>Add text </h2>
       input = <input type="text" key={id}  onChange={event => onChange(event, id)} />
     }
     if( c.type === 'img'){
-      text = <h2>Add image for {id}</h2>
+      text = <h2>Add image </h2>
       input = <input type="file" key={id}  onChange={event => onChange(event, id)} />
     }
     return(<>{text}{input}</>)
