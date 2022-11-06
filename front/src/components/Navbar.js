@@ -42,16 +42,6 @@ function Navbar() {
                 Home
               </i>
             </li>
-            <li className="nav-item">
-              <i to="/" className="nav-links" onClick={closeMobileMenu}>
-                Services
-              </i>
-            </li>
-            <li className="nav-item">
-              <i to="/" className="nav-links" onClick={closeMobileMenu}>
-                Products
-              </i>
-            </li>
           </ul>
         </div>
       </nav>

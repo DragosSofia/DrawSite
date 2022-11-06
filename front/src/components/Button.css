@@ -34,6 +34,32 @@
   font-size: 20px;
 }
 
+.input--field {
+  font-size: 30px;
+  background-color: transparent;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.label {
+  background-color: transparent;
+  color: #fff;
+  padding: 0.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
 .btn--large:hover,
 .btn--medium:hover {
   transition: all 0.3s ease-out;

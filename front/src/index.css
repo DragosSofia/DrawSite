@@ -16,12 +16,13 @@ body {
   padding: 0 10% 10%;
 }
 
-input,
+input
 textarea,
 button,
 select {
   font: inherit;
   margin-bottom: 1em;
+  background: transparent;
 }
 
 main {
@@ -31,6 +32,7 @@ main {
 
 section {
   margin-top: 1em;
+  background: transparent;
 }
 
 article {
